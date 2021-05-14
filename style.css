@@ -1,0 +1,32 @@
+:root{
+  --theme-primary: #0e0127;
+}
+
+*{
+  color: azure;
+  font-family: 'Days One', sans-serif;
+}
+
+.theme-bg{
+  background-color: var(--theme-primary);
+}
+
+.img-fix{
+  -webkit-user-drag: none;
+  user-select: none;
+  
+}
+
+.zoom{ 
+  transition: all .2s ease-in-out; 
+}
+
+
+.zoom:hover{ 
+  transform: scale(1.1); 
+}
+
+.zoom:active{
+  transform: scale(1);
+}
+

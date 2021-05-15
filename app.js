@@ -139,17 +139,17 @@ function buyMartianTeam() {
 
 
 function collectAutoUpgrades() {
-  for (let key in autoUpgrades){
+  for (let key in autoUpgrades) {
     resource += autoUpgrades[key].quantity * autoUpgrades[key].multiplier
   }
-  for (let key in autoUpgradesMars){
+  for (let key in autoUpgradesMars) {
     marsResource += autoUpgradesMars[key].quantity * autoUpgradesMars[key].multiplier
   }
   saveGame()
 }
 
-function buyMars(){
-  if (resource >= 1000000 && mars == false){
+function buyMars() {
+  if (resource >= 1000000 && mars == false) {
     mars = true
     document.getElementById("buy-mars").classList.add("d-none")
     document.getElementById("mars").classList.remove("d-none")
@@ -157,7 +157,7 @@ function buyMars(){
     saveGame()
     startIntervalHappiness()
   }
-  else if (mars == true){
+  else if (mars == true) {
     document.getElementById("buy-mars").classList.add("d-none")
     document.getElementById("mars").classList.remove("d-none")
     saveGame()
@@ -165,34 +165,34 @@ function buyMars(){
   }
 }
 
-function exchange(){
-  if (resource >= 100000){
-  resource -= 100000
-  marsResource += 1000
-  saveGame()
+function exchange() {
+  if (resource >= 100000) {
+    resource -= 100000
+    marsResource += 1000
+    saveGame()
   }
-  else {alert("Insufficent funds")}
+  else { alert("Insufficent funds") }
 }
 
-function exchangeMr(){
-  if (marsResource >= 1000){
-  resource += 100000
-  marsResource -= 1000
-  saveGame()
+function exchangeMr() {
+  if (marsResource >= 1000) {
+    resource += 100000
+    marsResource -= 1000
+    saveGame()
   }
-  else {alert("Insufficent funds")}
+  else { alert("Insufficent funds") }
 }
 
 function startInterval() {
   let interval = setInterval(collectAutoUpgrades, 5000)
 }
 
-function giveGifts(){
-  if (martianHappiness > 0 && resource >= 100000){
+function giveGifts() {
+  if (martianHappiness > 0 && resource >= 100000) {
     martianHappiness += 10
     resource -= 100000
     saveGame()
-  } 
+  }
   else if (resource >= 100000) {
     alert("they burnt your gift")
     resource -= 100000
@@ -200,33 +200,167 @@ function giveGifts(){
   }
 }
 
-function deployTroops(){
-  if (martianHappiness == 0 && resource >= 1000000){
+function deployTroops() {
+  if (martianHappiness == 0 && resource >= 1000000) {
     martianHappiness = 50
     resource -= 1000000
     saveGame()
   }
-  else if (martianHappiness > 0 && resource >= 1000000){
+  else if (martianHappiness > 0 && resource >= 1000000) {
     martianHappiness = 0
     resource -= 1000000
     saveGame()
   }
 }
 
-function happinessIncrement(){
-  if (martianHappiness == 0){
+function happinessIncrement() {
+  if (martianHappiness == 0) {
     document.getElementById("at-war").classList.remove("d-none")
     marsResource -= 100000
     saveGame()
-  } 
-  else if (martianHappiness > 0){document.getElementById("at-war").classList.add("d-none")
-  martianHappiness--
-  saveGame()
+  }
+  else if (martianHappiness > 0) {
+    document.getElementById("at-war").classList.add("d-none")
+    martianHappiness--
+    saveGame()
   }
 }
 
 function startIntervalHappiness() {
-  let interval = setInterval(happinessIncrement, 5000)
+ let happyInterval = setInterval(happinessIncrement, 5000)
+ return happyInterval
+}
+
+function stopIntervalHappiness(happyInterval){
+  clearInterval(happyInterval)
+}
+
+function lose() {
+  if (marsResource < -500000) {
+    alert("The martians captured and killed you. You lose.")
+    resource = 0
+    marsResource = 0
+    mars = false
+    martianHappiness = 100
+    clickUpgrades = {
+      pickaxe: {
+        price: 10,
+        quantity: 0,
+        multiplier: 1,
+      },
+      jackhammer: {
+        price: 50,
+        quantity: 0,
+        multiplier: 5,
+      }
+    }
+    autoUpgrades = {
+      digger: {
+        price: 500,
+        quantity: 0,
+        multiplier: 100,
+      },
+      excavator: {
+        price: 2000,
+        quantity: 0,
+        multiplier: 500,
+      }
+    }
+
+    clickUpgradesMars = {
+      lazerDrill: {
+        price: 1000,
+        quantity: 0,
+        multiplier: 50,
+      },
+      martianExcavator: {
+        price: 5000,
+        quantity: 0,
+        multiplier: 100,
+      }
+
+    }
+    autoUpgradesMars = {
+      beamMiner: {
+        price: 10000,
+        quantity: 0,
+        multiplier: 500,
+      },
+      martianTeam: {
+        price: 20000,
+        quantity: 0,
+        multiplier: 1000,
+      }
+    }
+    document.getElementById("mars").classList.add("d-none")
+    document.getElementById("buy-mars").classList.remove("d-none")
+    saveGame()
+    location.reload()
+  }
+}
+
+function reset() {
+  let answer = confirm("This will reset everything. Are you sure?")
+  if (answer == true) {
+    resource = 0
+    marsResource = 0
+    mars = false
+    martianHappiness = 100
+    clickUpgrades = {
+      pickaxe: {
+        price: 10,
+        quantity: 0,
+        multiplier: 1,
+      },
+      jackhammer: {
+        price: 50,
+        quantity: 0,
+        multiplier: 5,
+      }
+    }
+    autoUpgrades = {
+      digger: {
+        price: 500,
+        quantity: 0,
+        multiplier: 100,
+      },
+      excavator: {
+        price: 2000,
+        quantity: 0,
+        multiplier: 500,
+      }
+    }
+
+    clickUpgradesMars = {
+      lazerDrill: {
+        price: 1000,
+        quantity: 0,
+        multiplier: 50,
+      },
+      martianExcavator: {
+        price: 5000,
+        quantity: 0,
+        multiplier: 100,
+      }
+
+    }
+    autoUpgradesMars = {
+      beamMiner: {
+        price: 10000,
+        quantity: 0,
+        multiplier: 500,
+      },
+      martianTeam: {
+        price: 20000,
+        quantity: 0,
+        multiplier: 1000,
+      }
+    }
+    document.getElementById("mars").classList.add("d-none")
+    document.getElementById("buy-mars").classList.remove("d-none")
+    saveGame()
+    location.reload()
+  }
 }
 
 function update() {
@@ -253,6 +387,7 @@ function update() {
 }
 
 function saveGame() {
+  lose()
   window.localStorage.setItem("resource", JSON.stringify(resource))
   window.localStorage.setItem("clickUpgrades", JSON.stringify(clickUpgrades))
   window.localStorage.setItem("autoUpgrades", JSON.stringify(autoUpgrades))

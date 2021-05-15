@@ -155,11 +155,13 @@ function buyMars(){
     document.getElementById("mars").classList.remove("d-none")
     resource -= 1000000
     saveGame()
+    startIntervalHappiness()
   }
   else if (mars == true){
     document.getElementById("buy-mars").classList.add("d-none")
     document.getElementById("mars").classList.remove("d-none")
     saveGame()
+    startIntervalHappiness()
   }
 }
 
@@ -286,4 +288,3 @@ function loadGame() {
 }
 
 startInterval()
-startIntervalHappiness()

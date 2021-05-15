@@ -166,9 +166,12 @@ function buyMars(){
 }
 
 function exchange(){
+  if (resource >= 100000){
   resource -= 100000
   marsResource += 1000
   saveGame()
+  }
+  alert("Insufficent funds")
 }
 
 function startInterval() {

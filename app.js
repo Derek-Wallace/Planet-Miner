@@ -18,12 +18,12 @@ var autoUpgrades = {
   digger: {
     price: 500,
     quantity: 0,
-    multiplier: 10,
+    multiplier: 100,
   },
   excavator: {
     price: 2000,
     quantity: 0,
-    multiplier: 100,
+    multiplier: 500,
   }
 }
 

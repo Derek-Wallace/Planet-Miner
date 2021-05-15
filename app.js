@@ -171,7 +171,7 @@ function exchange(){
   marsResource += 1000
   saveGame()
   }
-  alert("Insufficent funds")
+  else {alert("Insufficent funds")}
 }
 
 function startInterval() {

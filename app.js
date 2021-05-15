@@ -179,12 +179,12 @@ function startInterval() {
 }
 
 function giveGifts(){
-  if (martianHappiness > 0){
+  if (martianHappiness > 0 && resource >= 100000){
     martianHappiness += 10
     resource -= 100000
     saveGame()
   } 
-  else {
+  else if (resource >= 100000) {
     alert("they burnt your gift")
     resource -= 100000
     saveGame()
@@ -192,12 +192,12 @@ function giveGifts(){
 }
 
 function deployTroops(){
-  if (martianHappiness == 0){
+  if (martianHappiness == 0 && resource >= 1000000){
     martianHappiness = 50
     resource -= 1000000
     saveGame()
   }
-  else if (martianHappiness > 0){
+  else if (martianHappiness > 0 && resource >= 1000000){
     martianHappiness = 0
     resource -= 1000000
     saveGame()

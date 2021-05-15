@@ -36,7 +36,7 @@ var clickUpgradesMars = {
   martianExcavator: {
     price: 5000,
     quantity: 0,
-    multiplier: 200,
+    multiplier: 100,
   }
 
 }
@@ -114,7 +114,7 @@ function buyMartianExcavator() {
   if (marsResource >= clickUpgradesMars.martianExcavator.price) {
     clickUpgradesMars.martianExcavator.quantity++
     marsResource -= clickUpgradesMars.martianExcavator.price
-    clickUpgradesMars.martianExcavator.price += 300
+    clickUpgradesMars.martianExcavator.price += 500
     saveGame()
   }
 }
@@ -169,6 +169,15 @@ function exchange(){
   if (resource >= 100000){
   resource -= 100000
   marsResource += 1000
+  saveGame()
+  }
+  else {alert("Insufficent funds")}
+}
+
+function exchangeMr(){
+  if (resource >= 100000){
+  resource += 100000
+  marsResource -= 1000
   saveGame()
   }
   else {alert("Insufficent funds")}

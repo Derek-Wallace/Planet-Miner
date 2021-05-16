@@ -176,7 +176,7 @@ function exchange() {
 
 function exchangeMr() {
   if (marsResource >= 1000) {
-    resource += 100000
+    resource += 10000
     marsResource -= 1000
     saveGame()
   }

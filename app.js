@@ -184,7 +184,7 @@ function exchangeMr() {
 }
 
 function startInterval() {
-  let interval = setInterval(collectAutoUpgrades, 5000)
+  let interval = setInterval(collectAutoUpgrades, 3000)
 }
 
 function giveGifts() {
@@ -229,7 +229,7 @@ function happinessIncrement() {
 }
 
 function startIntervalHappiness() {
- let happyInterval = setInterval(happinessIncrement, 5000)
+ let happyInterval = setInterval(happinessIncrement, 3000)
  return happyInterval
 }
 
